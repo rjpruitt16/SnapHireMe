@@ -16,7 +16,8 @@ const config = {
         exclude: /node_modules/,
         loader: 'babel-loader', // 'babel-loader' is also a legal name to reference
         query: {
-         presets: ['es2015', 'react']
+         presets: ['es2015', 'react'],
+         plugins: ["transform-decorators-legacy", "transform-class-properties"],
         }
       }
     ]

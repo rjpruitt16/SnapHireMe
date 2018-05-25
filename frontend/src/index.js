@@ -1,18 +1,9 @@
-import { AppContainer } from 'react-hot-loader';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import Hello from './components/Hello';
 
 
-const render = Component =>
-  ReactDOM.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>,
-    document.getElementById('root')
-  );
+const root = document.getElementById('root');
 
-render(App);
-
-// Webpack Hot Module Replacement API
-if (module.hot) module.hot.accept('./components/App', () => render(App));
+ReactDOM.render(<Hello/>, root);
