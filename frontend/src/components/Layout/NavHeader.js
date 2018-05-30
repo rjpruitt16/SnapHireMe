@@ -15,14 +15,14 @@ export default class NavHeader extends React.Component {
       <Navbar.Collapse>
 
       <Nav>
-        <NavItem eventKey={0} componentClass={Link} to="/">Home</NavItem>
-        <NavItem eventKey={1} componentClass={Link} to="AboutMe">About Me</NavItem>
-        <NavItem eventKey={2} componentClass={Link} to="SnapCapsule">SnapCapsule</NavItem>
+        <NavItem eventKey={0} href="/">Home</NavItem>
+        <NavItem eventKey={1} href="AboutMe">About Me</NavItem>
+        <NavItem eventKey={2} href="SnapCapsule">SnapCapsule</NavItem>
       </Nav>
 
       <Nav pullRight>
-        <NavItem eventKey={3} componentClass={Link} to="SignUp">SignUp</NavItem>
-        <NavItem eventKey={4} componentClass={Link} to="Login">Login</NavItem>
+        <NavItem eventKey={3} href="SignUp">SignUp</NavItem>
+        <NavItem eventKey={4} href="Login">Login</NavItem>
       </Nav>
   </Navbar.Collapse>
       </Navbar>
