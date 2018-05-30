@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import AboutMe from './pages/AboutMe';
 import Home from './pages/Home';
+import Login from './pages/Login';
 import SnapCapsule from './pages/SnapCapsule';
 
 import Footer from "./components/Layout/Footer";
@@ -13,6 +14,18 @@ import NavHeader from "./components/Layout/NavHeader";
 
 export default class App extends React.Component {
   render() {
+    const LoginVar = () => {
+      return (
+        <Login title="Log in"/>
+        );
+    }
+    const SignUp = () => {
+      return (
+        <Login title="Log in"
+            isSignUp={true}
+        />
+      );
+    }
     return (
       <div>
         < NavHeader />
@@ -22,6 +35,8 @@ export default class App extends React.Component {
           <Route exact path="/" component={Home}></Route>
           <Route path="/SnapCapsule" component={SnapCapsule}></Route>
           <Route path="/AboutMe" component={AboutMe}></Route>
+          <Route path="/SignUp" render={SignUp} isSignUp={true}></Route>
+          <Route path="/Login" render={LoginVar} title="Login"></Route>
         </Switch>
 
         < Footer />

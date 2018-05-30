@@ -21,12 +21,8 @@ export default class NavHeader extends React.Component {
       </Nav>
 
       <Nav pullRight>
-        <NavItem eventKey={1} href="#">
-          Sign Up
-        </NavItem>
-        <NavItem eventKey={2} href="#">
-          Login
-        </NavItem>
+        <NavItem eventKey={3} componentClass={Link} to="SignUp">SignUp</NavItem>
+        <NavItem eventKey={4} componentClass={Link} to="Login">Login</NavItem>
       </Nav>
   </Navbar.Collapse>
       </Navbar>
