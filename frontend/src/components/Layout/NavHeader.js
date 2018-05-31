@@ -8,7 +8,7 @@ export default class NavHeader extends React.Component {
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#brand">SnapCapsule</a>
+            SnapCapsule
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

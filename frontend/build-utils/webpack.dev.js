@@ -13,8 +13,15 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(gif|png|jpe?g|svg|css)$/,
         use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+            },
+          },
           {
             loader: 'style-loader'
           },

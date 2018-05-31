@@ -46,6 +46,7 @@
     "@storybook/addons": "^4.0.0-alpha.4",
     "@storybook/react": "^4.0.0-alpha.4",
     "babel-core": "^6.26.3",
-    "babel-runtime": "^7.0.0-beta.3"
+    "babel-runtime": "^7.0.0-beta.3",
+    "image-webpack-loader": "^4.2.0"
   }
 }

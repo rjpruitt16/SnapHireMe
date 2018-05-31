@@ -1,11 +1,15 @@
-import React from "react"
+import React from "react";
+import { Grid, Row } from "react-bootstrap";
+import Capsule from "../components/SnapCapsule/Capsule";
 
 export default class SnapCapsule extends React.Component {
   render() {
     return (
-      <div>
-        <h1> Here are the memories </h1>
-      </div>
+      <Grid>
+        <Row>
+          <Capsule />
+        </Row>
+      </Grid>
     );
   }
 }
