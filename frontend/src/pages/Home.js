@@ -1,10 +1,11 @@
 import React from "react";
+import Hero from "../components/Home/Hero";
 
 export default class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1> Welcome Home </h1>
+        < Hero />
       </div>
     );
   }
