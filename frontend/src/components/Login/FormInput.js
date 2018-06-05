@@ -9,7 +9,12 @@ export default class FormInputs extends React.Component {
           {this.props.title}
         </Col>
         <Col sm={10}>
-          <FormControl type={this.props.type} placeholder={this.props.title} />
+          <FormControl
+            type={this.props.type}
+            placeholder={this.props.title}
+            onChange={this.props.onChange}
+            name={this.props.name} 
+          />
         </Col>
       </FormGroup>
     );
