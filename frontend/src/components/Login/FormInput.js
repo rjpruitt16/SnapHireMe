@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Col, ControlLabel } from "react-bootstrap";
 export default class FormInputs extends React.Component {
   render() {
     return (
-      <FormGroup controlId="formHorizontalEmail">
+      <FormGroup id={this.props.id}>
         <Col componentClass={ControlLabel} sm={2}>
           {this.props.title}
         </Col>
@@ -13,7 +13,8 @@ export default class FormInputs extends React.Component {
             type={this.props.type}
             placeholder={this.props.title}
             onChange={this.props.onChange}
-            name={this.props.name} 
+            name={this.props.name}
+
           />
         </Col>
       </FormGroup>

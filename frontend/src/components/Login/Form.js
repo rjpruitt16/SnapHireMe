@@ -12,7 +12,8 @@ export default class AuthForm extends React.Component {
     this.Auth = this.props.auth;
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      redirect: false
     }
   }
 
@@ -20,7 +21,7 @@ export default class AuthForm extends React.Component {
        e.preventDefault();
        this.Auth.login(this.state.username, this.state.password)
            .then(() => {
-              this.setState = {redirect: true}
+              this.setState({redirect: true})
            })
            .catch(err =>{
                alert(err);
@@ -39,7 +40,7 @@ export default class AuthForm extends React.Component {
     const isSingUp = this.props.isSignUp &&
                     < FormInput title="Email" type="email"/>;
 
-    if (this.Auth.loggedIn()) {
+    if (this.state.redirect) {
       return <Redirect to="/" />;
     }
 

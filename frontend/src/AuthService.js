@@ -1,12 +1,14 @@
 import React from 'react';
 
-export default class AuthService {
+export class AuthService {
     // Initializing important variables
     constructor(domain) {
         this.domain = domain || 'http://localhost:8000' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
+        this.loggedIn = this.loggedIn.bind(this)
         this.getProfile = this.getProfile.bind(this)
+        this.logout = this.logout.bind(this)
     }
 
     login(username, password) {
@@ -46,6 +48,7 @@ export default class AuthService {
 
     setToken(idToken) {
         // Saves user token to localStorage
+        console.log("Login called");
         localStorage.setItem('id_token', idToken)
     }
 
@@ -56,6 +59,7 @@ export default class AuthService {
 
     logout() {
         // Clear user token and profile data from localStorage
+        console.log("Logout called");
         localStorage.removeItem('id_token');
     }
 
@@ -97,3 +101,5 @@ export default class AuthService {
         }
     }
 }
+
+export default new AuthService();

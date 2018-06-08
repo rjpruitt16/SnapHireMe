@@ -6,20 +6,20 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import SnapCapsule from './pages/SnapCapsule';
 
-import CapsuleForm from "./components/SnapCapsule/CapsuleForm";
+import CapsuleForm from "./components/CreateCapsule/CapsuleForm";
 import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
 import NavHeader from "./components/Layout/NavHeader";
 
 import CapsuleStore from "./CapsuleStore";
 
-import AuthService from "./AuthService"
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.Auth = new AuthService();
+    this.Auth = this.props.Auth;
   }
+
 
   render() {
     const LoginVar = () => {
@@ -47,23 +47,24 @@ export default class App extends React.Component {
     }
 
     const CreateCapsule = () => {
-        if (this.Auth.loggin()) {
+        if (this.Auth.loggedIn()) {
           return <CapsuleForm auth={this.Auth} />
         }
         return <Redirect to="Login" />
     }
 
     return (
+
       <div>
         < NavHeader auth={this.Auth} />
         < Header />
 
         <Switch>
           <Route exact path="/" component={Home}></Route>
-          <Route path="/SnapCapsule" component={SnapCapsuleStore}></Route>
+          <Route path="/SnapCapsule" render={SnapCapsuleStore}></Route>
           <Route path="/AboutMe" component={AboutMe}></Route>
-          <Route path="/SignUp" render={SignUp} title="SignUp"isSignUp={true}></Route>
-          <Route path="/Login" render={LoginVar} title="Login"></Route>
+          <Route path="/SignUp" render={SignUp}></Route>
+          <Route path="/Login" render={LoginVar}></Route>
           <Route path="/CreateCapsule" render={CreateCapsule}></Route>
         </Switch>
 

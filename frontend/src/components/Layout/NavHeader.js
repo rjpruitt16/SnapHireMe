@@ -3,6 +3,15 @@ import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default class NavHeader extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.auth.logout()
+  }
+
   render() {
     const navStyle = {
       paddingBottom: "0px",
@@ -16,7 +25,7 @@ export default class NavHeader extends React.Component {
         return (
           <Nav pullRight>
             <NavItem eventKey={3} href="CreateCapsule">CreateCapsule</NavItem>
-            <NavItem eventKey={4} onClick={props.auth.logout()}>logout</NavItem>
+            <NavItem eventKey={4} onClick={props.onClick}>Logout</NavItem>
           </Nav>
         );
       }
@@ -46,7 +55,7 @@ export default class NavHeader extends React.Component {
 
         < LoginOrCreateCapsule
           isLogin={this.props.auth.loggedIn()}
-          auth={this.props.auth}
+          onClick={this.handleClick}
         />
 
 

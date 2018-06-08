@@ -1,10 +1,13 @@
 {
-  "name": "frontend-for-ps",
+  "name": "SnapHireMe",
   "version": "1.0.0",
-  "description": "side project of persnoal site",
+  "description": "A project to get hire at snap",
   "main": "index.js",
   "author": "Rahmi Pruitt",
   "license": "Rahmi",
+  "permissions": [
+    "storage"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --env.env=dev",
     "prebuild": "rimraf dist",
