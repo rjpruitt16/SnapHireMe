@@ -12,6 +12,7 @@ export default class AuthForm extends React.Component {
     this.Auth = this.props.auth;
     this.state = {
       username: "",
+      email: "",
       password: "",
       redirect: false
     }
@@ -19,16 +20,29 @@ export default class AuthForm extends React.Component {
 
   handleFormSubmit(e){
        e.preventDefault();
-       this.Auth.login(this.state.username, this.state.password)
-           .then(() => {
-              this.setState({redirect: true})
-           })
-           .catch(err =>{
-               alert(err);
-           })
+       console.log("FormSubmit Called", this.Auth);
+       if (this.props.isSignUp) {
+         console.log(this.state.username, this.state.email)
+         this.Auth.signUp(this.state.username, this.state.email, this.state.password)
+             .then(() => {
+                this.setState({redirect: true})
+             })
+             .catch(err =>{
+                 alert(err);
+             })
+       } else {
+         this.Auth.login(this.state.username, this.state.password)
+             .then(() => {
+                this.setState({redirect: true})
+             })
+             .catch(err =>{
+                 alert(err);
+             })
+         }
    }
 
    handleChange(e) {
+     console.log(e.target.value)
      this.setState(
           {
               [e.target.name]: e.target.value
@@ -38,7 +52,10 @@ export default class AuthForm extends React.Component {
 
   render() {
     const isSingUp = this.props.isSignUp &&
-                    < FormInput title="Email" type="email"/>;
+                    < FormInput
+                      title="Email"
+                      name="email"
+                      onChange={this.handleChange.bind(this)}/>;
 
     if (this.state.redirect) {
       return <Redirect to="/" />;

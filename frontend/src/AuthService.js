@@ -9,6 +9,7 @@ export class AuthService {
         this.loggedIn = this.loggedIn.bind(this)
         this.getProfile = this.getProfile.bind(this)
         this.logout = this.logout.bind(this)
+        this.signUp = this.signUp.bind(this)
     }
 
     login(username, password) {
@@ -23,6 +24,20 @@ export class AuthService {
         }).then(res => {
             this.setToken(res.token) // Setting the token in localStorage
             return Promise.resolve(res);
+        })
+    }
+
+    signUp(username, email, password) {
+        console.log("Signup was called")
+        // Get a token from api server using the fetch api
+        return this.fetch(`${this.domain}/users/`, {
+            method: 'POST',
+            credentials: "same-origin",
+            body: JSON.stringify({
+                username,
+                email,
+                password
+            })
         })
     }
 
@@ -48,7 +63,6 @@ export class AuthService {
 
     setToken(idToken) {
         // Saves user token to localStorage
-        console.log("Login called");
         localStorage.setItem('id_token', idToken)
     }
 

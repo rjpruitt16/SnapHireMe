@@ -1,14 +1,14 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import Landscape from "./Landscape.jpeg";
-import People from "./People.jpeg";
+import BeachPeople from './BeachPeople.jpg';
+import Women from './YellowWoman.jpg';
 
 export default class Hero extends React.Component {
   render() {
     return (
       <Carousel controls={false}>
         <Carousel.Item>
-          <img src="src/components/Home/BeachPeople.jpg" />
+          <img src={ BeachPeople } />
           <Carousel.Caption>
             <h3>Share you memories</h3>
             <p>Snapcapsule allow you to save memories for a later day</p>
@@ -16,10 +16,10 @@ export default class Hero extends React.Component {
         </Carousel.Item>
 
         <Carousel.Item>
-          <img src="src/components/Home/YellowWoman.jpg" />
+          <img src={ Women } />
           <Carousel.Caption>
-           <h3> View Snapcapsules of other users. </h3>
-           <p> Snapcapsules can only be seen for a day. </p>
+           <h1> View Snapcapsules of other users. </h1>
+           <h3> Snapcapsules can only be seen for a day. </h3>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

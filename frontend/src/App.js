@@ -5,8 +5,8 @@ import AboutMe from './pages/AboutMe';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import SnapCapsule from './pages/SnapCapsule';
+import CapsuleForm from "./pages/CapsuleForm";
 
-import CapsuleForm from "./components/CreateCapsule/CapsuleForm";
 import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
 import NavHeader from "./components/Layout/NavHeader";
@@ -36,6 +36,7 @@ export default class App extends React.Component {
         <Login
           title="Sign up"
           isSignUp={true}
+          auth={this.Auth}
         />
       );
     }

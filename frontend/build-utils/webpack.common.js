@@ -19,7 +19,18 @@ const config = {
          presets: ['es2015', 'react'],
          plugins: ["transform-decorators-legacy", "transform-class-properties"],
         }
-      }
+      },
+      {
+          test: /\.(png|jpg|gif)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].[ext]',
+              }
+            }
+          ]
+        }
     ]
   },
   optimization: {
