@@ -14,10 +14,11 @@ import NavHeader from "./components/Layout/NavHeader";
 import CapsuleStore from "./CapsuleStore";
 
 
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.Auth = this.props.Auth;
+    this.Auth = this.props.auth;
   }
 
 

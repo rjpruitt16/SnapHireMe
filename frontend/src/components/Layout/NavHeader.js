@@ -1,15 +1,21 @@
 import React from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export default class NavHeader extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      redirect: false,
+    }
   }
 
   handleClick() {
     this.props.auth.logout()
+    this.setState(
+      {redirect: true}
+    );
   }
 
   render() {
@@ -35,6 +41,11 @@ export default class NavHeader extends React.Component {
           <NavItem eventKey={6} href="Login">Login</NavItem>
         </Nav>
       );
+   }
+
+   if (this.state.redirect) {
+     this.setState({redirect: false})
+     return <Redirect to="/" />
    }
 
     return (
