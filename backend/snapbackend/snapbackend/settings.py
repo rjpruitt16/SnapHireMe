@@ -26,6 +26,7 @@ SECRET_KEY = ')38=5s91xdz9+__k436rzj+jvr&r)cfwldk+%1hsj5uxj)-6c!'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000 # higher than the count of fields
 
 
 # Application definition
@@ -119,5 +120,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
+MEDIA_ROOT = '../../'
 STATIC_URL = '/static/'
