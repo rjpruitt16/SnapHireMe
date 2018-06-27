@@ -4,8 +4,16 @@ import Capsule from "./components/SnapCapsule/Capsule";
 export class CapsuleStore {
   @observable capsules = []
 
-  addCapsule(title, imagePath, datePost, dateToDelete, username) {
-    this.capsules.push(new Capsule(title, imagePath, datePost, dateToDelete, username));
+  addCapsule(title, imagePath, datePost, username) {
+    this.capsules.push(new Capsule(title, imagePath, datePost, username));
+  }
+
+  clear() {
+    this.capsules = []
+  }
+
+  isEmpty() {
+    return this.capsules === [];
   }
 }
 

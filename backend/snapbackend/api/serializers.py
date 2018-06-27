@@ -1,20 +1,26 @@
 from api.models import SnapCapsule
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
 class SnapCapsuleSerializer(serializers.HyperlinkedModelSerializer):
+    username = serializers.SerializerMethodField()
+
     class Meta:
         model = SnapCapsule
-        fields = ('user', 'dateToPost', 'image', 'caption', 'url')
+        fields = ('user', 'dateToPost', 'image', 'caption', 'url', 'username')
 
     def validate_dateToPost(self, value):
         present = datetime.now()
-        present = present + datetime.timedelta(minute=1)
-        if value < present:
+        present = present + timedelta(minutes=1)
+        value = value.replace(tzinfo=None)
+        if value > present:
             raise serializers.ValidationError("Date must greater than Present",
                present)
         return value
+
+    def get_username(self, object):
+        return object.user.username
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

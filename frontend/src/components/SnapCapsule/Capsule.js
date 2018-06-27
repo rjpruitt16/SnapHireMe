@@ -4,14 +4,12 @@ export default class Capsule {
   @observable title
   @observable imagePath
   @observable datePosted
-  @observable dateToDelete
   @observable username
 
-  constructor(title, imagePath, datePosted, dateToDelete, username) {
+  constructor(title, imagePath, datePosted, username) {
     this.title = title;
     this.imagePath = imagePath;
     this.datePosted = datePosted;
-    this.dateToDelete = dateToDelete;
     this.username = username;
   }
 }
