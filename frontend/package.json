@@ -13,7 +13,8 @@
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack -p --env.env=prod",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-and-deploy": "npm run build && s3cmd sync dist/* s3://snaphireme && echo '🚀  Deployed!'"
   },
   "dependencies": {
     "@types/jwt-decode": "^2.2.1",
@@ -27,6 +28,7 @@
     "chalk": "^2.4.1",
     "cross-env": "^5.1.4",
     "extract-text-webpack-plugin": "next",
+    "form-data": "^2.3.2",
     "html-webpack-plugin": "^3.2.0",
     "jsonwebtoken": "^8.2.2",
     "jwt-decode": "^2.2.0",
