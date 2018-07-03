@@ -1,3 +1,5 @@
+var decode = require('jwt-decode');
+
 export class PostService {
     // Initializing important variables
     constructor(domain) {
@@ -39,17 +41,11 @@ export class PostService {
         })
     }
 
-    PostCapsule(file, caption, dateToPost, username) {
-      console.log("Post Capsule was called")
-      return this.fetch(`${this.domain}/snapcapsule/`, {
+    postCapsule(formData) {
+      return fetch(`${this.domain}/snapcapsule/`, {
           method: 'POST',
-          credentials: "same-origin",
-          body: JSON.stringify({
-              username,
-              dateToPost,
-              file,
-              caption,
-          })
+          credentials: 'same-origin',
+          body: formData,
       })
     }
 
@@ -75,12 +71,12 @@ export class PostService {
 
     setToken(idToken) {
         // Saves user token to localStorage
-        localStorage.setItem('id_token', idToken)
+        localStorage.setItem('id_token', idToken);
     }
 
     getToken() {
         // Retrieves the user token from localStorage
-        return localStorage.getItem('id_token')
+        return localStorage.getItem('id_token');
     }
 
     logout() {
@@ -91,13 +87,18 @@ export class PostService {
 
     getProfile() {
         // Using jwt-decode npm package to decode the token
+        const token = this.getToken();
+        if (token === null) {
+          return null;
+        }
         return decode(this.getToken());
     }
 
 
     fetch(url, options) {
+      console.log("Fetch being called")
         // performs api calls sending the required authentication headers
-        const headers = {
+        var headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }

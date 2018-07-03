@@ -14,7 +14,6 @@ export default class FormInputs extends React.Component {
             placeholder={this.props.title}
             onChange={this.props.onChange}
             name={this.props.name}
-
           />
         </Col>
       </FormGroup>

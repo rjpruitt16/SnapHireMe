@@ -9,8 +9,11 @@ export default class Hero extends React.Component {
       <Carousel controls={false}>
         <Carousel.Item>
           <img src={ BeachPeople } />
+
           <Carousel.Caption>
-            <h3>Share you memories</h3>
+            <div className="centered">
+               <font size="500">Share you memories</font>
+            </div>
             <p>Snapcapsule allow you to save memories for a later day</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -18,7 +21,7 @@ export default class Hero extends React.Component {
         <Carousel.Item>
           <img src={ Women } />
           <Carousel.Caption>
-           <h1> View Snapcapsules of other users. </h1>
+           <font size="500">View Snapcapsules of other users.</font>
            <h3> Snapcapsules can only be seen for a day. </h3>
           </Carousel.Caption>
         </Carousel.Item>
