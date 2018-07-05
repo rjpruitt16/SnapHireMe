@@ -11,10 +11,6 @@ export class CapsuleStore {
   clear() {
     this.capsules = []
   }
-
-  isEmpty() {
-    return this.capsules === [];
-  }
 }
 
 export default new CapsuleStore();
