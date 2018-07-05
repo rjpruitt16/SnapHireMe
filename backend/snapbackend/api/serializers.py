@@ -12,11 +12,11 @@ class SnapCapsuleSerializer(serializers.HyperlinkedModelSerializer):
 
     def validate_dateToPost(self, value):
         present = datetime.now()
-        present = present + timedelta(minutes=1)
+        present = present - timedelta(minutes=5)
         value = value.replace(tzinfo=None)
-        if value > present:
-            raise serializers.ValidationError("Date must greater than Present",
-               present)
+        if value < present:
+            raise serializers.ValidationError("%s date must greater than present: %s"
+                                              % (str(value), str(present)))
         return value
 
     def get_username(self, object):
@@ -47,8 +47,14 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         return user
 
     def update(self, instance, validated_data):
-        for capsule in validated_data["snapcapsules"]:
+        assert (validated_data), "No data recieved."
+        for capsule in validated_data.get("snapcapsules", []):
+            snapcapsulea = instance.snapcapsules
             snapcapsule = SnapCapsule.object.create(user=instance.username,
                                                     **capsule)
             snapcapsule.save()
+            snapcapsules.append(snapcapsule)
+            instance.snapcapsules = snapcapsule
+            instance.save()
+
         return instance

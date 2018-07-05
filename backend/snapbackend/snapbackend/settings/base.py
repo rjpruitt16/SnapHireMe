@@ -32,6 +32,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000 # higher than the count of fields
 # Application definition
 
 INSTALLED_APPS = [
+    'api',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'snapbackend',
-    'api'
+    'snapbackend'
 ]
 
 MIDDLEWARE = [
@@ -120,6 +120,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-MEDIA_ROOT = '../../'
+MEDIA_ROOT = ''
 STATIC_URL = '/static/'
 STATIC_ROOT = "snapcapsule/"
