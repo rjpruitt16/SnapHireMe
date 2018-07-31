@@ -83,13 +83,8 @@ export default class AuthForm extends React.Component {
 
   render() {
     const needHelpBlock = this.state.invalidFormSubmit &&
-    <HelpBlock> Invalid Submit, Rahmi is just that good </HelpBlock>
-
-    const usernameHelpBlock = this.state.invalidUsername &&
-    <HelpBlock> Username must be 5-8 characters of letters or numbers </HelpBlock>
-
-    const passwordHelpBlock = this.state.invalidPassword &&
-    <HelpBlock> password must be 5-15 characters of letters or numbers </HelpBlock>
+    <HelpBlock> Username must be 5-8 characters of letters or numbers and
+    password must be 5-15 characters of letters or numbers</HelpBlock>
 
     const isSingUp = this.props.isSignUp &&
                       <FormGroup id={1}>

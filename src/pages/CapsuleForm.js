@@ -2,6 +2,7 @@ import axios from 'axios';
 var MyForm = require('form-data');
 import moment from 'moment';
 import React from "react";
+import { Redirect } from 'react-router-dom';
 import { Button, Col, controlId, ControlLabel, HelpBlock,
          Form, FormGroup, FormControl } from "react-bootstrap";
 import DatePicker from 'react-datepicker';
@@ -43,11 +44,15 @@ export default class CapsuleForm extends React.Component {
       return;
     }
 
+    axios.defaults.headers.common['Authorization'] = 'Token ' + this.props.auth.getToken();
+    console.log(this.props.auth.getToken());
+
     var capsule = new MyForm();
     capsule.append("user", this.state.userUrl);
     capsule.append("dateToPost", this.state.dateToPost.format());
     capsule.append("image", this.state.image);
     capsule.append("caption", this.state.caption);
+    capsule.append("dateToDelete", this.state.dateToPost.add(1, "d").format());
 
     axios.post(this.props.auth.domain + "/snapcapsule/", capsule)
     .then(() => {

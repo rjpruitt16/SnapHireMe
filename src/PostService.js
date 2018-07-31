@@ -2,12 +2,13 @@ var decode = require('jwt-decode');
 
 export class PostService {
     // Initializing important variables
-    constructor(domain) {
-        this.domain = domain || 'http://localhost:8000' // API server domain
+    constructor() {
+        this.domain = 'http://rjpruitt22.pythonanywhere.com' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
         this.loggedIn = this.loggedIn.bind(this)
         this.getProfile = this.getProfile.bind(this)
+        this.getToken = this.getToken.bind(this)
         this.logout = this.logout.bind(this)
         this.signUp = this.signUp.bind(this)
     }
@@ -16,7 +17,6 @@ export class PostService {
         // Get a token from api server using the fetch api
         return this.fetch(`${this.domain}/api-token-auth/`, {
             method: 'POST',
-            credentials: "same-origin",
             body: JSON.stringify({
                 username,
                 password
@@ -32,7 +32,6 @@ export class PostService {
         // Get a token from api server using the fetch api
         return this.fetch(`${this.domain}/users/`, {
             method: 'POST',
-            credentials: "same-origin",
             body: JSON.stringify({
                 username,
                 email,
@@ -44,7 +43,6 @@ export class PostService {
     postCapsule(formData) {
       return fetch(`${this.domain}/snapcapsule/`, {
           method: 'POST',
-          credentials: 'same-origin',
           body: formData,
       })
     }
@@ -96,11 +94,11 @@ export class PostService {
 
 
     fetch(url, options) {
-      console.log("Fetch being called")
+      console.log("Fetch being called", url)
         // performs api calls sending the required authentication headers
         var headers = {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         }
 
         // Setting Authorization header

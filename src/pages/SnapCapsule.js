@@ -9,6 +9,7 @@ export default class SnapCapsule extends React.Component {
     axios.get(`${this.props.domain}/snapcapsule`)
       .then(res => {
         res.data.map((capsule) => {
+          console.log(capsule);
           this.props.store.addCapsule(
             capsule["caption"],
             capsule["image"],
@@ -29,7 +30,8 @@ export default class SnapCapsule extends React.Component {
       <Col key={i} xs={6} md={4}>
         <Thumbnail src={capsule.imagePath} alt="242x200">
           <h2> {capsule.title} </h2>
-          <p> @{capsule.username} </p>
+          <p> @{capsule.username} at {capsule.datePosted} </p>
+
         </Thumbnail>
       </Col>
     ));
